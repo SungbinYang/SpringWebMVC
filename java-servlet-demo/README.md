@@ -59,3 +59,18 @@ System.out.println("destroy");
 
 - 참고 
     * https://docs.oracle.com/cd/B14099_19/web.1012/b14017/filters.htm#i1000654
+
+## 스프링 IoC 컨테이너 연동 
+
+![](./img02.png)
+
+> (출처: https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc)
+
+- 서블릿 애플리케이션에 스프링 연동하기 
+    * 서블릿에서 스프링이 제공하는 IoC 컨테이너 활용하는 방법 
+    * 스프링이 제공하는 서블릿 구현체 DispatcherServlet 사용하기 
+- ContextLoaderListener 
+    * 서블릿 리스너 구현체
+    * ApplicationContext를 만들어 준다. 
+    * ApplicationContext를 서블릿 컨텍스트 라이프사이클에 따라 등록하고 소멸시켜준다.
+    * 서블릿에서 IoC 컨테이너를 ServletContext를 통해 꺼내 사용할 수 있다.
