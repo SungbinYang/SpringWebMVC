@@ -74,3 +74,20 @@ System.out.println("destroy");
     * ApplicationContext를 만들어 준다. 
     * ApplicationContext를 서블릿 컨텍스트 라이프사이클에 따라 등록하고 소멸시켜준다.
     * 서블릿에서 IoC 컨테이너를 ServletContext를 통해 꺼내 사용할 수 있다.
+
+## 스프링 MVC 연동
+
+![](./img02.png)
+
+> (출처: https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc)
+
+- 서블릿 애플리케이션에 스프링 연동하기 
+    * 서블릿에서 스프링이 제공하는 IoC 컨테이너 활용하는 방법 
+    * 스프링이 제공하는 서블릿 구현체 DispatcherServlet 사용하기
+- DispatcherServlet
+    * 스프링 MVC의 핵심. 
+    * Front Controller 역할을 한다. 
+- 참고 
+    * http://www.corej2eepatterns.com/FrontController.htm
+    * https://www.oracle.com/technetwork/java/frontcontroller-135648.html 
+    * https://martinfowler.com/eaaCatalog/frontController.html
