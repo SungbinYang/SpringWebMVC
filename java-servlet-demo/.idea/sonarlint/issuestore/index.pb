@@ -16,5 +16,3 @@ Z
 *src/main/java/me/sungbin/HelloServlet.java,5/9/59062590c81ea08f8414788d31a45bb67c6b92d7
 W
 'src/main/java/me/sungbin/AppConfig.java,a/7/a776303ef6fd3c9e43b37d11f91dd860ad1a73cf
-W
-'src/main/java/me/sungbin/WebConfig.java,0/6/06687ccec83a94bbf3ba289965594d50c1f7f1f4

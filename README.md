@@ -8,3 +8,4 @@
 - 스프링 MVC 연동
 - DispatcherServlet 동작 원리 1부
 - DispatcherServlet 동작 원리 2부: SimpleController
+- DispatcherServlet 동작 원리 3부: 커스텀 ViewResolver

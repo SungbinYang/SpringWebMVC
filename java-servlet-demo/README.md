@@ -129,3 +129,34 @@ System.out.println("destroy");
         } 
     }
     ```
+
+## DispatcherServlet 동작 원리 3부: 커스텀 ViewResolver
+- ViewResolver 
+    * InternalResourceViewResolver 
+- InternalResourceViewResolver 
+    * Prefix 
+    * Suffix
+
+    ```java
+    @Configuration 
+    @ComponentScan 
+    public class WebConfig { 
+        @Bean 
+        public InternalResourceViewResolver viewResolver() { 
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver(); viewResolver.setPrefix("/WEB-INF/"); 
+        viewResolver.setSuffix(".jsp"); 
+        return viewResolver; 
+        } 
+    }
+    ```
+  
+    ```java
+    @org.springframework.stereotype.Controller("/simple") 
+    public class SimpleController implements Controller { 
+        @Override 
+        public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception { 
+        return new ModelAndView("/WEB-INF/simple.jsp"); 
+        } 
+    }
+    
+    ```
