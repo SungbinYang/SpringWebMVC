@@ -113,3 +113,19 @@ System.out.println("destroy");
     * RequestMappingHandlerMapping
 - HandlerAdapter
     * RequestMappingHandlerAdapter
+
+## DispatcherServlet 동작 원리 2부: SimpleController 
+- HandlerMapping 
+    * BeanNameUrlHandlerMapping 
+- HandlerAdapter
+    * SimpleControllerHandlerAdapter
+
+    ```java
+    @org.springframework.stereotype.Controller("/simple") 
+    public class SimpleController implements Controller { 
+        @Override 
+        public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception { 
+        return new ModelAndView("/WEB-INF/simple.jsp"); 
+        } 
+    }
+    ```

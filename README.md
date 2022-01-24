@@ -7,3 +7,4 @@
 - 스프링 IoC 컨테이너 연동
 - 스프링 MVC 연동
 - DispatcherServlet 동작 원리 1부
+- DispatcherServlet 동작 원리 2부: SimpleController
