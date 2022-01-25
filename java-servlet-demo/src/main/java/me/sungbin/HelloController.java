@@ -19,7 +19,7 @@ public class HelloController {
     }
 
     @GetMapping("/sample")
-    public String sample() {
-        return "sample";
+    public void sample() {
+
     }
 }
