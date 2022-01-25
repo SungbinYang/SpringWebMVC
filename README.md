@@ -10,3 +10,4 @@
 - DispatcherServlet 동작 원리 2부: SimpleController
 - DispatcherServlet 동작 원리 3부: 커스텀 ViewResolver
 - 스프링 MVC 구성 요소
+- 스프링 MVC 동작원리 정리
