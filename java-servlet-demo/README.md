@@ -207,3 +207,6 @@ System.out.println("destroy");
   * 자바 애플리케이션에 내장 톰캣을 만들고 그 안에 DispatcherServlet을 등록한다. 
     * 스프링 부트 자동 설정이 자동으로 해줌. 
   * 스프링 부트의 주관에 따라 여러 인터페이스 구현체를 빈으로 등록한다.
+
+## 스프링 MVC 구성 요소 직접 빈으로 등록하기
+- @Configuration을 사용한 자바 설정 파일에 직접 @Bean을 사용해서 등록하기 (low level)
