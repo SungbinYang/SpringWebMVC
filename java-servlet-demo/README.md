@@ -210,3 +210,13 @@ System.out.println("destroy");
 
 ## 스프링 MVC 구성 요소 직접 빈으로 등록하기
 - @Configuration을 사용한 자바 설정 파일에 직접 @Bean을 사용해서 등록하기 (low level)
+
+## @EnableWebMvc 
+- 애노테이션 기반 스프링 MVC를 사용할 때 편리한 웹 MVC 기본 설정 
+
+  ```java
+  @Configuration 
+  @EnableWebMvc 
+  public class WebConfig { 
+  }
+  ```
