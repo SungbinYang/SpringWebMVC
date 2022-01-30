@@ -8,3 +8,42 @@
     * WebMvcConfigurer의 addFormatters(FormatterRegistry) 메소드 정의 
 - 포매터 추가하는 방법 2 (스프링 부트 사용시에만 가능 함) 
     * 해당 포매터를 빈으로 등록
+
+## 도메인 클래스 컨버터 자동 등록
+- 스프링 데이터 JPA는 스프링 MVC용 도메인 클래스 컨버터를 제공합니다.
+- 도메인 클래스 컨버터 
+  * 스프링 데이터 JPA가 제공하는 Repository를 사용해서 ID에 해당하는 엔티티를 읽어옵니다. 
+- 의존성 설정 
+
+  ```xml
+  <dependency> 
+  <groupId>org.springframework.boot</groupId> 
+  <artifactId>spring-boot-starter-data-jpa</artifactId> 
+  </dependency> 
+  <dependency> 
+  <groupId>com.h2database</groupId> 
+  <artifactId>h2</artifactId> 
+  </dependency>
+  ```
+
+- 엔티티 맵핑 
+
+  ```java
+  @Entity 
+  public class Person { 
+  @Id @GeneratedValue 
+  private Integer id; 
+  ...
+  
+  ```
+
+- 리파지토리 추가 
+
+  ```java
+  public interface PersonRepository extends JpaRepository<Person, Integer> { }
+  ```
+
+- 테스트 코드 수정 
+  * 테스트용 이벤트 객체 생성 
+  * 이벤트 리파지토리에 저장 
+  * 저장한 이벤트의 ID로 조회 시도
