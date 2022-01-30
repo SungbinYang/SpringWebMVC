@@ -13,7 +13,7 @@ import javax.servlet.ServletRegistration;
  * fileName : WebApplication
  * author : rovert
  * date : 2022/01/25
- * description :
+ * description : web.xml 대체
  * ===========================================================
  * DATE 			AUTHOR			 NOTE
  * -----------------------------------------------------------
@@ -25,6 +25,7 @@ public class WebApplication implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+        context.setServletContext(servletContext);
         context.register(WebConfig.class);
         context.refresh();
 

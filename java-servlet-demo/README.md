@@ -224,13 +224,13 @@ System.out.println("destroy");
 ## WebMvcConfigurer 인터페이스 
 - @EnableWebMvc가 제공하는 빈을 커스터마이징할 수 있는 기능을 제공하는 인터페이스
 
-```java
-@Configuration 
-@EnableWebMvc 
-public class WebConfig implements WebMvcConfigurer { 
-@Override 
-public void configureViewResolvers(ViewResolverRegistry registry) { 
-registry.jsp("/WEB-INF/", ".jsp"); 
-} 
-}
-```
+  ```java
+  @Configuration 
+  @EnableWebMvc 
+  public class WebConfig implements WebMvcConfigurer { 
+  @Override 
+  public void configureViewResolvers(ViewResolverRegistry registry) { 
+  registry.jsp("/WEB-INF/", ".jsp"); 
+  } 
+  }
+  ```
