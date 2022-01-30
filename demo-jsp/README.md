@@ -35,3 +35,14 @@
     spring.mvc.view.prefix=/WEB-INF/jsp/
     spring.mvc.view.suffix=.jsp
     ```
+
+## WAR 파일 배포하기
+- java -jar를 사용해서 실행하기
+  * SpringApplication.run 사용하기 
+
+  ![](./img01.png)
+
+- 서블릿 컨테이너에 배포하기 
+  * SpringBootServletInitializer (WebApplicationInitializer) 사용하기
+
+  ![](./img02.png)
