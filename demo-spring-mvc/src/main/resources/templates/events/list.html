@@ -13,13 +13,12 @@
       <th>시작</th>
       <th>종료</th>
     </tr>
-    <tr>
-      <tr th:each="event: ${events}">
-        <td th:text="${event.name}">이밴트 이름</td>
-        <td th:text="${event.limitOfEnrollment}">100</td>
-        <td th:text="${event.startTime}">2023년 2월 1일 오전 10시</td>
-        <td th:text="${event.endDateTime}">2023년 2월 1일 오전 12시</td>
-      </tr>
+    <tr th:each="event: ${events}">
+      <td th:text="${event.name}">이밴트 이름</td>
+      <td th:text="${event.limitOfEnrollment}">100</td>
+      <td th:text="${event.startTime}">2023년 2월 1일 오전 10시</td>
+      <td th:text="${event.endDateTime}">2023년 2월 1일 오전 12시</td>
+    </tr>
   </table>
 </body>
 </html>

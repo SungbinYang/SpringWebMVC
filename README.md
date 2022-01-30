@@ -17,3 +17,4 @@
 - 스프링 MVC 구성 요소 직접 빈으로 등록하기
 - @EnableWebMvc
 - WebMvcConfigurer 인터페이스
+- 스프링 부트의 스프링 MVC 설정

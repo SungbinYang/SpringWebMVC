@@ -52,3 +52,16 @@
     * service()는 보통 HTTP Method에 따라 doGet(), doPost() 등으로 처리를 위임한다. 
     * 따라서 보통 doGet() 또는 doPost()를 구현한다.
   * 서블릿 컨테이너 판단에 따라 해당 서블릿을 메모리에서 내려야 할 시점에 destroy()를 호출한다.
+
+## 스프링 부트의 스프링 MVC 설정
+
+![](./img01.png)
+
+- 스프링 부트의 “주관”이 적용된 자동 설정이 동작한다. 
+  * JSP 보다 Thymeleaf 선호 
+  * JSON 지원 
+  * 정적 리소스 지원 (+ 웰컴 페이지, 파비콘 등 지원) 
+- 스프링 MVC 커스터마이징 
+  * application.properties 
+  * @Configuration + Implements WebMvcConfigurer: 스프링 부트의 스프링 MVC 자동설정 + 추가 설정 
+  * @Configuration + @EnableWebMvc + Imlements WebMvcConfigurer: 스프링 부트의 스프링 MVC 자동설정 사용하지 않음.
