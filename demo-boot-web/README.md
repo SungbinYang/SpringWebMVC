@@ -181,3 +181,45 @@
   * JSON path 문법 
   * https://github.com/json-path/JsonPath
   * http://jsonpath.com/
+
+## HTTP 메시지 컨버터 3부: XML 
+- OXM(Object-XML Mapper) 라이브러리 중에 스프링이 지원하는 의존성 추가 
+  * JacksonXML 
+  * JAXB
+- 스프링 부트를 사용하는 경우 
+  * 기본으로 XML 의존성 추가해주지 않음.
+- JAXB 의존성 추가 
+
+  ```xml
+    <dependency> 
+      <groupId>javax.xml.bind</groupId> 
+      <artifactId>jaxb-api</artifactId> 
+    </dependency> 
+    <dependency> 
+      <groupId>org.glassfish.jaxb</groupId> 
+      <artifactId>jaxb-runtime</artifactId> 
+    </dependency> 
+    <dependency> 
+      <groupId>org.springframework</groupId> 
+      <artifactId>spring-oxm</artifactId> 
+      <version>${spring-framework.version}</version> 
+    </dependency>
+  ```
+
+- Marshaller 등록 
+
+  ```java
+  @Bean 
+  public Jaxb2Marshaller marshaller() { 
+    Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller(); 
+    jaxb2Marshaller.setPackagesToScan(Event.class.getPackageName()); 
+    return jaxb2Marshaller; 
+  }
+  
+  ```
+
+- 도메인 클래스에 @XmlRootElement 애노테이션 추가 
+- 참고
+  * Xpath 문법 
+  * https://www.w3schools.com/xml/xpath_syntax.asp 
+  * https://www.freeformatter.com/xpath-tester.html

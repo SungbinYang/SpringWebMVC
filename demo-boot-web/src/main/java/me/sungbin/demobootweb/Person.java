@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * packageName : me.sungbin.demobootweb
@@ -22,6 +23,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
+@XmlRootElement
 public class Person {
 
     @Id @GeneratedValue
