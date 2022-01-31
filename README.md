@@ -28,3 +28,4 @@
 - HTTP 메시지 컨버터 1부: 개요
 - HTTP 메시지 컨버터 2부: JSON
 - HTTP 메시지 컨버터 3부: XML
+- 그밖에 WebMvcConfigurer 설정
