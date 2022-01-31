@@ -30,3 +30,7 @@
 - HTTP 메시지 컨버터 3부: XML
 - 그밖에 WebMvcConfigurer 설정
 - 스프링 MVC 설정 마무리
+
+## 스프링 MVC 활용
+
+- 스프링 MVC 핵심 기술 소개
