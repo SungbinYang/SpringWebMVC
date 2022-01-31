@@ -148,3 +148,11 @@
 - 메타 애노테이션 
   * https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans meta-annotations 
   * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/co re/annotation/AliasFor.html
+
+## HTTP 요청 맵핑하기 7부: 맵핑 연습 문제
+- 다음 요청을 처리할 수 있는 핸들러 메소드를 맵핑하는 @RequestMapping (또는 @GetMapping, @PostMapping 등)을 정의하세요.
+  * GET /events
+  * GET /events/1, GET /events/2, GET /events/3,
+  * POST /events CONTENT-TYPE: application/json ACCEPT: application/json 
+  * DELETE /events/1, DELETE /events/2, DELETE /events/3,
+  * PUT /events/1 CONTENT-TYPE: application/json ACCEPT: application/json, PUT /events/2 CONTENT-TYPE: application/json ACCEPT: application/json, ...
