@@ -1,0 +1,46 @@
+package me.sungbin.demowebmvc;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+/**
+ * packageName : me.sungbin.demowebmvc
+ * fileName : SampleControllerTest
+ * author : rovert
+ * date : 2022/01/31
+ * description :
+ * ===========================================================
+ * DATE 			AUTHOR			 NOTE
+ * -----------------------------------------------------------
+ * 2022/01/31       rovert         최초 생성
+ */
+
+@WebMvcTest
+class SampleControllerTest {
+
+    @Autowired
+    MockMvc mockMvc;
+
+    @Test
+    void hello() throws Exception {
+        mockMvc.perform(get("/hello"))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+        mockMvc.perform(put("/hello"))
+                .andDo(print())
+                .andExpect(status().isMethodNotAllowed());
+
+        mockMvc.perform(post("/hello"))
+                .andDo(print())
+                .andExpect(status().isMethodNotAllowed());
+    }
+}
