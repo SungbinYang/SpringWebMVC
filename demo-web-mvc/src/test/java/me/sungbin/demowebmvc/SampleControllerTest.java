@@ -3,6 +3,7 @@ package me.sungbin.demowebmvc;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -31,7 +32,7 @@ class SampleControllerTest {
     @Test
     void hello() throws Exception {
         mockMvc.perform(get("/hello")
-                        .contentType(MediaType.APPLICATION_JSON))
+                        .param("name", "sungbin"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }

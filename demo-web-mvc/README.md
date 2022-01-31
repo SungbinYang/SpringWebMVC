@@ -97,3 +97,17 @@
 - 문자열을 입력하는 대신 MediaType을 사용하면 상수를 (IDE에서) 자동 완성으로 사용할 수 있다.
 - 클래스에 선언한 @RequestMapping에 사용한 것과 조합이 되지 않고 메소드에 사용한 @RequestMapping의 설정으로 덮어쓴다.
 - Not (!)을 사용해서 특정 미디어 타입이 아닌 경우로 맵핑 할 수도 있다.
+
+## HTTP 요청 맵핑하기 4부: 헤더와 매개변수
+- 특정한 헤더가 있는 요청을 처리하고 싶은 경우 
+  * @RequestMapping(headers = “key”) 
+- 특정한 헤더가 없는 요청을 처리하고 싶은 경우
+  * @RequestMapping(headers = “!key”) 
+- 특정한 헤더 키/값이 있는 요청을 처리하고 싶은 경우 
+  * @RequestMapping(headers = “key=value”) 
+- 특정한 요청 매개변수 키를 가지고 있는 요청을 처리하고 싶은 경우 
+  * @RequestMapping(params = “a”)
+- 특정한 요청 매개변수가 없는 요청을 처리하고 싶은 경우 
+  * @RequestMapping(params = “!a”) 
+- 특정한 요청 매개변수 키/값을 가지고 있는 요청을 처리하고 싶은 경우 
+  * @RequestMapping(params = “a=b”)
