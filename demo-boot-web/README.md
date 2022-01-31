@@ -76,3 +76,44 @@
   * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/w eb/servlet/HandlerInterceptor.html 
   * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/w eb/servlet/AsyncHandlerInterceptor.html
   * http://forum.spring.io/forum/spring-projects/web/20146-what-is-the-difference-between-u sing-a-filter-and-interceptor (스프링 개발자 Mark Fisher의 서블릿 필터와의 차이점에 대한 답변 참고)
+
+## 핸들러 인터셉터 2부: 만들고 등록하기 
+- 핸들러 인터셉터 구현하기 
+
+  ```java
+  public class GreetingInterceptor implements HandlerInterceptor { 
+    @Override 
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception { 
+      System.out.println("preHandle 1"); 
+      return true; 
+    } 
+    @Override 
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception { 
+      System.out.println("postHandle 1"); 
+    } 
+    @Override 
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception { 
+      System.out.println("afterCompletion 1"); 
+    } 
+  }
+  
+  ```
+
+- 핸들러 인터셉터 등록하기 
+
+  ```java
+  @Configuration 
+  public class WebConfig implements WebMvcConfigurer { 
+    @Override 
+    public void addInterceptors(InterceptorRegistry registry) { 
+      registry.addInterceptor(new GreetingInterceptor()).order(0); 
+      registry.addInterceptor(new AnotherInterceptor()) 
+      .addPathPatterns("/keeun") 
+      .order(-1); 
+    } 
+  }
+  
+  ```
+
+- 특정 패턴에 해당하는 요청에만 적용할 수도 있다. 
+- 순서를 지정할 수 있다.
