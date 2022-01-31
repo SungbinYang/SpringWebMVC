@@ -167,3 +167,17 @@
     * (이 기능 자체는 스프링 프레임워크의 기능임, 스프링 부트 아님.) 
 - 참고 
   * https://www.baeldung.com/spring-httpmessageconverter-rest
+
+## HTTP 메시지 컨버터 2부: JSON
+- 스프링 부트를 사용하지 않는 경우 
+  * 사용하고 싶은 JSON 라이브러리를 의존성으로 추가
+  * GSON 
+  * JacksonJSON 
+  * JacksonJSON2
+- 스프링 부트를 사용하는 경우 
+  * 기본적으로 JacksonJSON 2가 의존성에 들어있다.
+  * 즉, JSON용 HTTP 메시지 컨버터가 기본으로 등록되어 있다. 
+- 참고 
+  * JSON path 문법 
+  * https://github.com/json-path/JsonPath
+  * http://jsonpath.com/
