@@ -70,4 +70,13 @@ class SampleControllerTest {
                 .andExpect(model().attributeExists("event"));
     }
 
+    @Test
+    void ModelAttribute_테스트() throws Exception {
+        mockMvc.perform(post("/event/name/sungbin")
+                        .param("limit", "-10"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("name").value("sungbin"));
+    }
+
 }

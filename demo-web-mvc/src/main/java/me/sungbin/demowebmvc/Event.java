@@ -2,6 +2,9 @@ package me.sungbin.demowebmvc;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
+import javax.validation.constraints.Min;
 
 /**
  * packageName : me.sungbin.demowebmvc
@@ -16,11 +19,13 @@ import lombok.Setter;
  */
 
 @Getter @Setter
+@ToString
 public class Event {
 
     private Integer id;
 
     private String name;
 
+    @Min(0)
     private Integer limit;
 }

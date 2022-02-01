@@ -45,3 +45,4 @@
 - 핸들러 메소드 2부: URI 패턴
 - 핸들러 메소드 3부: @RequestMapping
 - 핸들러 메소드 4부: 폼 서브밋 (타임리프)
+- 핸들러 메소드 5부: @ModelAttribute

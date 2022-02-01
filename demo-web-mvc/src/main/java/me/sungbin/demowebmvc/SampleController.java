@@ -1,11 +1,14 @@
 package me.sungbin.demowebmvc;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.validation.Valid;
 
 /**
  * packageName : me.sungbin.demowebmvc
@@ -22,13 +25,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class SampleController {
 
-    @PostMapping("/event")
+    @PostMapping("/event/name/{name}")
     @ResponseBody
-    public Event getEvent(String name, Integer limit) {
-        Event event = new Event();
-        event.setName(name);
-        event.setLimit(limit);
-
+    public Event getEvent(@Valid Event event, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            System.out.println("===============================");
+            bindingResult.getAllErrors().forEach(System.out::println);
+        }
         return event;
     }
 
