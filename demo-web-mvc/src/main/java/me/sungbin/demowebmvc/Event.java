@@ -21,4 +21,6 @@ public class Event {
     private Integer id;
 
     private String name;
+
+    private Integer limit;
 }

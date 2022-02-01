@@ -6,6 +6,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -42,6 +43,24 @@ class SampleControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id").value(1));
+    }
+
+    @Test
+    void RequestParam_테스트_query_parameter() throws Exception {
+        mockMvc.perform(post("/event?name=sungbin"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("name").value("sungbin"));
+    }
+
+    @Test
+    void RequestParam_테스트_form_data() throws Exception {
+        mockMvc.perform(post("/event")
+                        .param("name", "sungbin")
+                        .param("limit", "5"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("name").value("sungbin"));
     }
 
 }

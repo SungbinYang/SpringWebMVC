@@ -1,9 +1,7 @@
 package me.sungbin.demowebmvc;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.MatrixVariable;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -21,12 +19,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class SampleController {
 
-    @GetMapping("/event/{id}")
+    @PostMapping("/event")
     @ResponseBody
-    public Event getEvent(@PathVariable Integer id, @MatrixVariable String name) {
+    public Event getEvent(String name, Integer limit) {
         Event event = new Event();
-        event.setId(id);
         event.setName(name);
+        event.setLimit(limit);
 
         return event;
     }
