@@ -7,6 +7,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -21,16 +22,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * 2022/01/31       rovert         최초 생성
  */
 
-@WebMvcTest
+@WebMvcTest(SampleController.class)
 class SampleControllerTest {
 
     @Autowired
     MockMvc mockMvc;
 
     @Test
-    void hello() throws Exception {
-        mockMvc.perform(get("/hello"))
+    void PathVariable_테스트() throws Exception {
+        mockMvc.perform(get("/event/1"))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("id").value(1));
     }
+
+    @Test
+    void MatrixVariable_테스트() throws Exception {
+        mockMvc.perform(get("/event/1;name=sungbin"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("id").value(1));
+    }
+
 }
