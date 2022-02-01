@@ -1,7 +1,10 @@
 package me.sungbin.demowebmvc;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -27,5 +30,14 @@ public class SampleController {
         event.setLimit(limit);
 
         return event;
+    }
+
+    @GetMapping("/event/form")
+    public String eventForm(Model model) {
+        Event newEvent = new Event();
+        newEvent.setLimit(50);
+        model.addAttribute("event", newEvent);
+
+        return "events/form";
     }
 }

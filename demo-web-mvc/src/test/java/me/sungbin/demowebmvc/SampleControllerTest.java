@@ -8,8 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * packageName : me.sungbin.demowebmvc
@@ -61,6 +60,14 @@ class SampleControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("name").value("sungbin"));
+    }
+
+    @Test
+    void RequestParam_테스트_form_data2() throws Exception {
+        mockMvc.perform(get("/event/form"))
+                .andDo(print())
+                .andExpect(view().name("events/form"))
+                .andExpect(model().attributeExists("event"));
     }
 
 }

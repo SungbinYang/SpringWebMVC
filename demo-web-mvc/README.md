@@ -230,3 +230,16 @@
   * 폼 데이터 
 - 참고: 
   * https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-requestparam
+
+## 핸들러 메소드 4부: 폼 서브밋 (타임리프)
+- 폼을 보여줄 요청 처리
+  * GET /events/form 
+  * 뷰: events/form.html
+  * 모델: “event”, new Event() 
+- 타임리프 
+  * @{}: URL 표현식
+  * ${}: variable 표현식
+  * *{}: selection 표현식
+- 참고
+  * https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html
+  * https://www.getpostman.com/downloads/
