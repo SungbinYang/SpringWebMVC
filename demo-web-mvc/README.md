@@ -435,3 +435,47 @@
 - 참고 
   * https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-responsebody
   * https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-responseentity
+
+## 핸들러 메소드 17부: @JsonView
+- 도메인 또는 DTO 클래스를 이용해서 다양한 JSON 뷰를 만들 수 있는 기능
+- 뷰 정의
+
+  ```java
+  public class BookJsonView {
+  
+      interface Simple {}
+  
+      interface Complex extends Simple {}
+  }
+  ```
+
+- @JsonView 사용
+
+  ```java
+  @Getter @Setter
+  public class Book {
+  
+      @JsonView(BookJsonView.Simple.class)
+      private Long id;
+  
+      @JsonView(BookJsonView.Simple.class)
+      private String isbn;
+  
+      @JsonView(BookJsonView.Complex.class)
+      private Date published;
+  
+      @JsonView(BookJsonView.Complex.class)
+      private Set<Author> authors = new HashSet<>();
+  
+      @JsonView(BookJsonView.Simple.class)
+      private String title;
+  
+      public void addAuthor(Author author) {
+          this.authors.add(author);
+      }
+  }
+  ```
+
+- 전제 조건
+> Mapper.DEFAULT_VIEW_INCLUSION 이 기능 Disabled (스프링부트 기본설정)
+> 그래야 @JsonView 애노테이션 안 붙인 프로퍼티는 제외시켜준다.
