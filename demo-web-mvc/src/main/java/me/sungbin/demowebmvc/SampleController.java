@@ -4,7 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -57,23 +60,24 @@ public class SampleController {
         }
 
         status.setComplete();
-        redirectAttributes.addAttribute("name", event.getName());
-        redirectAttributes.addAttribute("limit", event.getLimit());
+        redirectAttributes.addFlashAttribute("newEvent", event);
 
         return "redirect:/event/list";
     }
 
     @GetMapping("/event/list")
-    public String getEvent(@ModelAttribute("newEvent") Event event, Model model, @SessionAttribute LocalDateTime visitTime) {
+    public String getEvent(Model model, @SessionAttribute LocalDateTime visitTime) {
         System.out.println(visitTime);
 
         Event spring = new Event();
         spring.setName("spring");
         spring.setLimit(10);
 
+        Event newEvent = (Event) model.asMap().get("newEvent");
+
         List<Event> eventList = new ArrayList<>();
         eventList.add(spring);
-        eventList.add(event);
+        eventList.add(newEvent);
 
         model.addAttribute(eventList);
 

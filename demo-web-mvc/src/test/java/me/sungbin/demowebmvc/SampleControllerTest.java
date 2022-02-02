@@ -8,6 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Objects;
 
@@ -112,6 +113,20 @@ class SampleControllerTest {
 
         Object event = Objects.requireNonNull(request.getSession()).getAttribute("event");
         System.out.println(event);
+    }
+
+    @Test
+    void FlashAttribute_테스트() throws Exception {
+        Event newEvent = new Event();
+        newEvent.setName("Winter is gone");
+        newEvent.setLimit(10000);
+
+        mockMvc.perform(get("/event/list")
+                .sessionAttr("visitTime", LocalDateTime.now())
+                .flashAttr("newEvent", newEvent))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(xpath("//p").nodeCount(2));
     }
 
 }
