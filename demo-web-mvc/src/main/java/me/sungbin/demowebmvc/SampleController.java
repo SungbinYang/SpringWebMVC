@@ -28,26 +28,37 @@ import java.util.List;
 @SessionAttributes("event")
 public class SampleController {
 
-    @PostMapping("/event")
-    public String createEvent(@Validated Event event, BindingResult bindingResult, Model model, SessionStatus status) {
+    @GetMapping("/event/form/name")
+    public String eventFormName(Model model) {
+        model.addAttribute("event", new Event());
+
+        return "/events/form-name";
+    }
+
+    @PostMapping("/event/form/name")
+    public String eventFormNameSubmit(@Validated Event event, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "/events/form";
+            return "/events/form-name";
         }
-        List<Event> eventList = new ArrayList<>();
-        eventList.add(event);
-        model.addAttribute(eventList);
+        return "redirect:/event/form/limit";
+    }
+
+    @GetMapping("/event/form/limit")
+    public String eventFormLimit(Event event, Model model) {
+        model.addAttribute("event", event);
+
+        return "/events/form-limit";
+    }
+
+    @PostMapping("/event/form/limit")
+    public String eventFormLimitSubmit(@Validated Event event, BindingResult bindingResult, Model model, SessionStatus status) {
+        if (bindingResult.hasErrors()) {
+            return "/events/form-limit";
+        }
+
         status.setComplete();
 
         return "redirect:/event/list";
-    }
-
-    @GetMapping("/event/form")
-    public String eventForm(Model model) {
-        Event newEvent = new Event();
-        newEvent.setLimit(50);
-        model.addAttribute("event", newEvent);
-
-        return "events/form";
     }
 
     @GetMapping("/event/list")

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>new Event</title>
+</head>
+<body>
+    <form action="#" th:action="@{/event/form/name}" method="post" th:object="${event}">
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect date</p>
+        Name: <input type="text" title="name" th:field="*{name}" />
+        <input type="submit" value="create" />
+    </form>
+</body>
+</html>
