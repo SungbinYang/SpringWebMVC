@@ -6,6 +6,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +25,18 @@ import java.util.List;
  */
 
 @Controller
+@SessionAttributes("event")
 public class SampleController {
 
     @PostMapping("/event")
-    public String createEvent(@Validated Event event, BindingResult bindingResult, Model model) {
+    public String createEvent(@Validated Event event, BindingResult bindingResult, Model model, SessionStatus status) {
         if (bindingResult.hasErrors()) {
             return "/events/form";
         }
         List<Event> eventList = new ArrayList<>();
         eventList.add(event);
         model.addAttribute(eventList);
+        status.setComplete();
 
         return "redirect:/event/list";
     }

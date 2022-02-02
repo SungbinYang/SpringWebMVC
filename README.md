@@ -48,3 +48,4 @@
 - 핸들러 메소드 5부: @ModelAttribute
 - 핸들러 메소드 6부: @Validated
 - 핸들러 메소드 7부: 폼 서브밋 (에러 처리)
+- 핸들러 메소드 8부: @SessionAttributes

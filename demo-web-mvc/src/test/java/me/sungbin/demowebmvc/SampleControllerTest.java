@@ -3,12 +3,15 @@ package me.sungbin.demowebmvc;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
+import java.util.Objects;
 
+import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -96,6 +99,19 @@ class SampleControllerTest {
         assert mav != null;
         Map<String, Object> model = mav.getModel();
         System.out.println(model.size());
+    }
+
+    @Test
+    void sessionTest() throws Exception {
+        MockHttpServletRequest request = mockMvc.perform(get("/event/form"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("event"))
+                .andExpect(request().sessionAttribute("event", notNullValue()))
+                .andReturn().getRequest();
+
+        Object event = Objects.requireNonNull(request.getSession()).getAttribute("event");
+        System.out.println(event);
     }
 
 }
