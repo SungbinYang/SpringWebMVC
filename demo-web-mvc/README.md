@@ -425,3 +425,13 @@
 - 참고 
   * https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-requestbody
   * https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-httpentity
+
+## 핸들러 메소드 16부: @ResponseBody & ResponseEntity
+- @ResponseBody 
+  * 데이터를 HttpMessageConverter를 사용해 응답 본문 메시지로 보낼 때 사용한다. 
+  * @RestController 사용시 자동으로 모든 핸들러 메소드에 적용 된다. 
+- ResponseEntity 
+  * 응답 헤더 상태 코드 본문을 직접 다루고 싶은 경우에 사용한다.
+- 참고 
+  * https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-responsebody
+  * https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-responseentity

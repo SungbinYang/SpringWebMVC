@@ -1,10 +1,12 @@
 package me.sungbin.demowebmvc;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
@@ -20,18 +22,18 @@ import javax.validation.Valid;
  * 2022/02/02       rovert         최초 생성
  */
 
-@RestController
+@Controller
 @RequestMapping("/api/events")
 public class SampleApi {
 
     @PostMapping
-    public Event createEvent(@Valid @RequestBody Event event, BindingResult bindingResult) {
+    public ResponseEntity<Event> createEvent(@Valid @RequestBody Event event, BindingResult bindingResult) {
         // save event
         if (bindingResult.hasErrors()) {
-            bindingResult.getAllErrors().forEach(System.out::println);
+            return ResponseEntity.badRequest().build();
         }
 
-        return event;
+        return new ResponseEntity<>(event, HttpStatus.CREATED);
     }
 
 }

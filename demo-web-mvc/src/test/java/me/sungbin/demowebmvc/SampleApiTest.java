@@ -46,10 +46,9 @@ class SampleApiTest {
 
         mockMvc.perform(post("/api/events")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(json))
+                .content(json)
+                .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("name").value("sungbin"))
-                .andExpect(jsonPath("limit").value(-20));
+                .andExpect(status().isBadRequest());
     }
 }
