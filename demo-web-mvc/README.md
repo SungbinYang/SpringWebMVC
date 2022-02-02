@@ -331,3 +331,45 @@
 - XPath 
   * https://www.w3schools.com/xml/xpath_syntax.asp
   * https://www.freeformatter.com/xpath-tester.html#ad-output
+
+## 핸들러 메소드 13부: MultipartFile
+- MultipartFile 
+  * 파일 업로드시 사용하는 메소드 아규먼트 
+  * MultipartResolver 빈이 설정 되어 있어야 사용할 수 있다. (스프링 부트 자동 설정이 해 줌)
+  * POST multipart/form-data 요청에 들어있는 파일을 참조할 수 있다. 
+  * List<MultipartFile> 아큐먼트로 여러 파일을 참조할 수도 있다.
+- 파일 업로드 폼 
+
+  ```html
+  <form method="POST" enctype="multipart/form-data" action="#" th:action="@{/file}"> File: <input type="file" name="file"/> 
+    <input type="submit" value="Upload"/> 
+  </form>
+  ```
+
+- 파일 업로드 처리 핸들러 
+
+  ```java
+  @PostMapping("/file") 
+  public String uploadFile(@RequestParam MultipartFile file, 
+  RedirectAttributes attributes) { 
+    String message = file.getOriginalFilename() + " is uploaded."; 
+    System.out.println(message); 
+    attributes.addFlashAttribute("message", message); 
+    return "redirect:/events/list"; 
+  }
+  ```
+  
+- 메시지 출력 
+
+  ```html
+  <div th:if="${message}"> 
+      <h2 th:text="${message}"/> 
+  </div>
+  ```
+
+- 파일 업로드 관련 스프링 부트 설정 
+  * MultipartAutoConfiguration 
+  * MultipartProperties 
+- 참고 
+  * https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-multipart-forms
+  * https://spring.io/guides/gs/uploading-files/
