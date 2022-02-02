@@ -479,3 +479,5 @@
 - 전제 조건
 > Mapper.DEFAULT_VIEW_INCLUSION 이 기능 Disabled (스프링부트 기본설정)
 > 그래야 @JsonView 애노테이션 안 붙인 프로퍼티는 제외시켜준다.
+
+## 핸들러 메소드 18부: 정리

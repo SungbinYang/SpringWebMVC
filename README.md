@@ -58,3 +58,4 @@
 - 핸들러 메소드 15부: @RequestBody & HttpEntity
 - 핸들러 메소드 16부: @ResponseBody & ResponseEntity
 - 핸들러 메소드 17부: @JsonView
+- 핸들러 메소드 18부: 정리
