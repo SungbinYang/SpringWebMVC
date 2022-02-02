@@ -4,11 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -53,25 +51,30 @@ public class SampleController {
     }
 
     @PostMapping("/event/form/limit")
-    public String eventFormLimitSubmit(@Validated Event event, BindingResult bindingResult, Model model, SessionStatus status) {
+    public String eventFormLimitSubmit(@Validated Event event, BindingResult bindingResult, SessionStatus status, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return "/events/form-limit";
         }
 
         status.setComplete();
+        redirectAttributes.addAttribute("name", event.getName());
+        redirectAttributes.addAttribute("limit", event.getLimit());
 
         return "redirect:/event/list";
     }
 
     @GetMapping("/event/list")
-    public String getEvent(Model model, @SessionAttribute LocalDateTime visitTime) {
+    public String getEvent(@ModelAttribute("newEvent") Event event, Model model, @SessionAttribute LocalDateTime visitTime) {
         System.out.println(visitTime);
-        Event event = new Event();
-        event.setName("spring");
-        event.setLimit(10);
+
+        Event spring = new Event();
+        spring.setName("spring");
+        spring.setLimit(10);
 
         List<Event> eventList = new ArrayList<>();
+        eventList.add(spring);
         eventList.add(event);
+
         model.addAttribute(eventList);
 
         return "/events/list";
