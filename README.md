@@ -61,3 +61,4 @@
 - 핸들러 메소드 18부: 정리
 - 모델: @ModelAttribute 또 다른 사용법
 - DataBinder: @InitBinder
+- 예외 처리 핸들러: @ExceptionHandler
