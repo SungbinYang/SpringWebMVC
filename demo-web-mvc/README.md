@@ -481,3 +481,18 @@
 > 그래야 @JsonView 애노테이션 안 붙인 프로퍼티는 제외시켜준다.
 
 ## 핸들러 메소드 18부: 정리
+
+## 모델: @ModelAttribute 또 다른 사용법
+- @ModelAttribute의 다른 용법 
+  * @RequestMapping을 사용한 핸들러 메소드의 아규먼트에 사용하기
+  * @Controller 또는 @ControllerAdvice 를 사용한 클래스에서 모델 정보를 초기화 할 때 사용한다.
+  * @RequestMapping과 같이 사용하면 해당 메소드에서 리턴하는 객체를 모델에 넣어 준다. 
+    * RequestToViewNameTranslator
+  
+```java
+@ModelAttribute 
+public void subjects(Model model) { 
+  model.addAttribute("subjects", List.of("study", "seminar", "hobby", "social")); 
+}
+
+```

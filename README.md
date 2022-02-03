@@ -59,3 +59,4 @@
 - 핸들러 메소드 16부: @ResponseBody & ResponseEntity
 - 핸들러 메소드 17부: @JsonView
 - 핸들러 메소드 18부: 정리
+- 모델: @ModelAttribute 또 다른 사용법

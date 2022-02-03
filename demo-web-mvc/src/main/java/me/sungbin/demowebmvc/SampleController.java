@@ -2,12 +2,10 @@ package me.sungbin.demowebmvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -31,8 +29,23 @@ import java.util.List;
 @SessionAttributes("event")
 public class SampleController {
 
+    @ModelAttribute
+    public void categories(Model model) {
+        model.addAttribute("categories", List.of("study", "seminar", "hobby", "social"));
+    }
+
+    @GetMapping("/event/form/test")
+    public Event eventForTest() {
+        return new Event();
+    }
+
+//    @ModelAttribute("categories")
+//    public List<String> categories(Model model) {
+//        return List.of("study", "seminar", "hobby", "social");
+//    }
+
     @GetMapping("/event/form/name")
-    public String eventFormName(Model model) {
+    public String eventFormName(ModelMap model) {
         model.addAttribute("event", new Event());
 
         return "/events/form-name";
