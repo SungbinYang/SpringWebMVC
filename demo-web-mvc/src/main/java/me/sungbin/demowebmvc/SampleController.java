@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -27,7 +28,16 @@ import java.util.List;
 
 @Controller
 @SessionAttributes("event")
+//@RequiredArgsConstructor
 public class SampleController {
+
+//    private final EventValidator eventValidator;
+
+    @InitBinder("event")
+    public void initEventBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setDisallowedFields("id"); // 받고싶지 않는 필드값을 걸러낼수 있다.
+        webDataBinder.addValidators(new EventValidator()); // 커스텀한 validation을 할수 있다.
+    }
 
     @ModelAttribute
     public void categories(Model model) {
@@ -56,6 +66,9 @@ public class SampleController {
         if (bindingResult.hasErrors()) {
             return "/events/form-name";
         }
+
+//        eventValidator.validate(event, bindingResult);
+
         return "redirect:/event/form/limit";
     }
 

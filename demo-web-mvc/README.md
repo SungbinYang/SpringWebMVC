@@ -496,3 +496,25 @@ public void subjects(Model model) {
 }
 
 ```
+
+## DataBinder: @InitBinder
+- 특정 컨트롤러에서 바인딩 또는 검증 설정을 변경하고 싶을 때 사용 
+
+  ```java
+  @InitBinder 
+  public void initEventBinder(WebDataBinder webDataBinder) { 
+      webDataBinder.setDisallowedFields("id"); 
+  }
+  ```
+
+- 바인딩 설정 
+  * webDataBinder.setDisallowedFields(); 
+- 포매터 설정 
+  * webDataBinder.addCustomFormatter(); 
+- Validator 설정 
+  * webDataBinder.addValidators(); 
+- 특정 모델 객체에만 바인딩 또는 Validator 설정을 적용하고 싶은 경우 
+  * @InitBinder(“event”) 
+- 참고 
+  * https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-initbinder
+  * https://github.com/spring-projects/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/owner/PetController.java
