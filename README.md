@@ -63,3 +63,4 @@
 - DataBinder: @InitBinder
 - 예외 처리 핸들러: @ExceptionHandler
 - 전역 컨트롤러: @(Rest)ControllerAdvice
+- 스프링 MVC 강좌 마무리
