@@ -33,24 +33,6 @@ public class SampleController {
 
 //    private final EventValidator eventValidator;
 
-    @ExceptionHandler({EventException.class, RuntimeException.class})
-    public String eventErrorHandler(RuntimeException exception, Model model) {
-        model.addAttribute("message", "runtime Error");
-
-        return "error";
-    }
-
-    @InitBinder("event")
-    public void initEventBinder(WebDataBinder webDataBinder) {
-        webDataBinder.setDisallowedFields("id"); // 받고싶지 않는 필드값을 걸러낼수 있다.
-        webDataBinder.addValidators(new EventValidator()); // 커스텀한 validation을 할수 있다.
-    }
-
-    @ModelAttribute
-    public void categories(Model model) {
-        model.addAttribute("categories", List.of("study", "seminar", "hobby", "social"));
-    }
-
     @GetMapping("/event/form/test")
     public Event eventForTest() {
         return new Event();
